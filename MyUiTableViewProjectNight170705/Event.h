@@ -14,4 +14,8 @@
 @property  NSString     *shortInfo;
 @property  NSString     *detailInfo;
 
+
+- (instancetype)initWithShortInfo: (NSString *) si andDetailInfo:  (NSString *) di;
+
+
 @end

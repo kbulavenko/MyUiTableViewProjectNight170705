@@ -49,12 +49,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"eventsId" forIndexPath: indexPath];
     
+    // Configure the cell...
     if (!cell) {
-        cell = [[UITableViewCell alloc]  initWithStyle: UITableViewCellStyleValue1 reuseIdentifier: @"eventsId"];
+        cell = [[UITableViewCell alloc]  initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"eventsId"];
     }
     if(indexPath.row >= [[Events defaultCollection] allEventsCount] && [self isEditing])   {
         cell.textLabel.text             = @"Add event";
-        cell.detailTextLabel.text       = nil;
+        cell.detailTextLabel.text       = @" ";
+        
         //cell.imageView.image            = nil;
     }
     else {
@@ -63,9 +65,6 @@
         cell.textLabel.text   =  [NSString    stringWithFormat:  @"%@ %@", currentEvent.time , currentEvent.shortInfo ];
         cell.detailTextLabel.text  =  currentEvent.detailInfo.copy;
     }
-    
-    // Configure the cell...
-    
     return cell;
 }
 
@@ -74,6 +73,7 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
+    NSLog(@"Editing");
     [super setEditing:editing animated:animated];
     
     if (editing) {
@@ -84,11 +84,13 @@
         [self.tableView endUpdates];
         
     } else {
-        
-        [self.tableView beginUpdates];
-        // ....
-        [self.eventsTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow: [[Events defaultCollection] allEventsCount] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic ];
-        [self.tableView endUpdates];
+      //  if([[Events defaultCollection] allEventsCount ] > 0 ) {
+            
+            [self.tableView beginUpdates];
+            // ....
+            [self.eventsTableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow: [[Events defaultCollection] allEventsCount] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic ];
+            [self.tableView endUpdates];
+        //}
         
     }
 
@@ -99,21 +101,38 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
+    //return indexPath.row <= [[Events defaultCollection] allEventsCount ] && indexPath.row > 0;
 }
 
 
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    NSLog(@"commitEditingStyle %@", indexPath);
+    if (editingStyle == UITableViewCellEditingStyleDelete && [[Events defaultCollection] allEventsCount ] > 0) {
         // Delete the row from the data source
         [[Events  defaultCollection]   removeEventAtIndex: indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        Event    *newEvent  =  [[Event alloc]   initWithShortInfo: [NSString  stringWithFormat:@"Short:%i",rand()%100]
+                                                    andDetailInfo:[NSString  stringWithFormat:@"Detail:%i",rand()%100 + 1000]];
+        [[Events defaultCollection]  addEvent: newEvent ];
+        [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation: UITableViewRowAnimationFade];
     }   
 }
 
+
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row >= [[Events defaultCollection] allEventsCount ]) {
+        return UITableViewCellEditingStyleInsert;
+        
+    } else {
+        return UITableViewCellEditingStyleDelete;
+    }
+}
 
 /*
 // Override to support rearranging the table view.
