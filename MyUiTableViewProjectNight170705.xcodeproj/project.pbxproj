@@ -15,6 +15,9 @@
 		1909FCE11F0D89980091941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1909FCDF1F0D89980091941F /* LaunchScreen.storyboard */; };
 		1909FCEC1F0D89980091941F /* MyUiTableViewProjectNight170705Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909FCEB1F0D89980091941F /* MyUiTableViewProjectNight170705Tests.m */; };
 		1909FCF71F0D89980091941F /* MyUiTableViewProjectNight170705UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909FCF61F0D89980091941F /* MyUiTableViewProjectNight170705UITests.m */; };
+		1909FD0A1F0D902B0091941F /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909FD091F0D902B0091941F /* MyTableViewController.m */; };
+		1909FD0D1F0D94070091941F /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909FD0C1F0D94070091941F /* Events.m */; };
+		1946B2C61F11B394004FACB2 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1946B2C51F11B394004FACB2 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		1909FCF21F0D89980091941F /* MyUiTableViewProjectNight170705UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyUiTableViewProjectNight170705UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1909FCF61F0D89980091941F /* MyUiTableViewProjectNight170705UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyUiTableViewProjectNight170705UITests.m; sourceTree = "<group>"; };
 		1909FCF81F0D89980091941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1909FD081F0D902B0091941F /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
+		1909FD091F0D902B0091941F /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
+		1909FD0B1F0D94070091941F /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
+		1909FD0C1F0D94070091941F /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Events.m; sourceTree = "<group>"; };
+		1946B2C41F11B394004FACB2 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		1946B2C51F11B394004FACB2 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +110,10 @@
 		1909FCD01F0D89980091941F /* MyUiTableViewProjectNight170705 */ = {
 			isa = PBXGroup;
 			children = (
-				1909FCD41F0D89980091941F /* AppDelegate.h */,
-				1909FCD51F0D89980091941F /* AppDelegate.m */,
-				1909FCD71F0D89980091941F /* ViewController.h */,
-				1909FCD81F0D89980091941F /* ViewController.m */,
-				1909FCDA1F0D89980091941F /* Main.storyboard */,
-				1909FCDD1F0D89980091941F /* Assets.xcassets */,
-				1909FCDF1F0D89980091941F /* LaunchScreen.storyboard */,
+				1909FD071F0D8F110091941F /* API */,
+				1909FD061F0D8EFC0091941F /* Controller */,
+				1909FD051F0D8EF60091941F /* Model */,
+				1909FD041F0D8EE30091941F /* View */,
 				1909FCE21F0D89980091941F /* Info.plist */,
 				1909FCD11F0D89980091941F /* Supporting Files */,
 			);
@@ -138,6 +144,47 @@
 				1909FCF81F0D89980091941F /* Info.plist */,
 			);
 			path = MyUiTableViewProjectNight170705UITests;
+			sourceTree = "<group>";
+		};
+		1909FD041F0D8EE30091941F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1909FCDA1F0D89980091941F /* Main.storyboard */,
+				1909FCDD1F0D89980091941F /* Assets.xcassets */,
+				1909FCDF1F0D89980091941F /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1909FD051F0D8EF60091941F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1946B2C41F11B394004FACB2 /* Event.h */,
+				1946B2C51F11B394004FACB2 /* Event.m */,
+				1909FD0B1F0D94070091941F /* Events.h */,
+				1909FD0C1F0D94070091941F /* Events.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1909FD061F0D8EFC0091941F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1909FCD71F0D89980091941F /* ViewController.h */,
+				1909FCD81F0D89980091941F /* ViewController.m */,
+				1909FD081F0D902B0091941F /* MyTableViewController.h */,
+				1909FD091F0D902B0091941F /* MyTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1909FD071F0D8F110091941F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1909FCD41F0D89980091941F /* AppDelegate.h */,
+				1909FCD51F0D89980091941F /* AppDelegate.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1946B2C61F11B394004FACB2 /* Event.m in Sources */,
 				1909FCD91F0D89980091941F /* ViewController.m in Sources */,
 				1909FCD61F0D89980091941F /* AppDelegate.m in Sources */,
+				1909FD0D1F0D94070091941F /* Events.m in Sources */,
 				1909FCD31F0D89980091941F /* main.m in Sources */,
+				1909FD0A1F0D902B0091941F /* MyTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +568,7 @@
 				1909FCFD1F0D89980091941F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1909FCFE1F0D89980091941F /* Build configuration list for PBXNativeTarget "MyUiTableViewProjectNight170705Tests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +577,7 @@
 				1909FD001F0D89980091941F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1909FD011F0D89980091941F /* Build configuration list for PBXNativeTarget "MyUiTableViewProjectNight170705UITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +586,7 @@
 				1909FD031F0D89980091941F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

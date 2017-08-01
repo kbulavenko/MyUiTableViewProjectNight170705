@@ -17,6 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [Events defaultCollection];
+    
+    self->_myTableVC   = [MyTableViewController  new];
+    
+    self->_myTableVC.eventsTableView.dataSource    = self->_myTableVC;
+    self->_myTableVC.eventsTableView.delegate      = self->_myTableVC;
+   // self->_MyTableView.dataSource   = self->_myTableVC;
+  //  self->_MyTableView.delegate     = self->_myTableVC;
+    
+    
+    
 }
 
 
