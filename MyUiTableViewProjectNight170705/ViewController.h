@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyTableViewController.h"
+#import "EventsTableViewController.h"
 
 
 @interface ViewController : UIViewController
 
 
-@property  (strong, nonatomic)   MyTableViewController   *myTableVC;
+@property  (strong, nonatomic)   EventsTableViewController   *myTableVC;
 //@property (weak, nonatomic) IBOutlet UITableView *MyTableView;
 
 @end

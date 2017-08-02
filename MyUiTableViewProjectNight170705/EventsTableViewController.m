@@ -6,13 +6,14 @@
 //  Copyright © 2017 Z. All rights reserved.
 //
 
-#import "MyTableViewController.h"
+#import "EventsTableViewController.h"
+#import "EventEditViewController.h"
 
-@interface MyTableViewController ()
+@interface EventsTableViewController ()
 
 @end
 
-@implementation MyTableViewController
+@implementation EventsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,8 +63,11 @@
     else {
         Event     *currentEvent  =[[Events  defaultCollection]   eventAtIndex: indexPath.row];
         
-        cell.textLabel.text   =  [NSString    stringWithFormat:  @"%@ %@", currentEvent.time , currentEvent.shortInfo ];
-        cell.detailTextLabel.text  =  currentEvent.detailInfo.copy;
+        //cell.textLabel.text   =  [NSString    stringWithFormat:  @"%@ %@", currentEvent.time , currentEvent.shortInfo ];
+      
+        cell.textLabel.text   =  [NSString    stringWithFormat:  @"%@", currentEvent.time];
+
+        cell.detailTextLabel.text  =   currentEvent.shortInfo.copy;  // currentEvent.detailInfo.copy;
     }
     return cell;
 }
@@ -115,8 +119,10 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        Event    *newEvent  =  [[Event alloc]   initWithShortInfo: [NSString  stringWithFormat:@"Short:%i",rand()%100]
-                                                    andDetailInfo:[NSString  stringWithFormat:@"Detail:%i",rand()%100 + 1000]];
+        
+        NSInteger       numberForInitEvent    =  rand() % 100;
+        Event    *newEvent  =  [[Event alloc]   initWithShortInfo: [NSString  stringWithFormat:@"Short:%li",numberForInitEvent]
+                                                    andDetailInfo:[NSString  stringWithFormat:@"Detail:%li",numberForInitEvent + 1000]];
         [[Events defaultCollection]  addEvent: newEvent ];
         [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation: UITableViewRowAnimationFade];
     }   
@@ -148,14 +154,20 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
+    EventEditViewController     *eventEditViewControllerExemplar    =  segue.destinationViewController;
+    NSLog(@"%@", eventEditViewControllerExemplar);
     // Pass the selected object to the new view controller.
+    EventsTableViewController   *currentEventTableViewControllerExevplar  = segue.sourceViewController;
+    
+    
+    eventEditViewControllerExemplar.indexOfEvent  = currentEventTableViewControllerExevplar.tableView.indexPathForSelectedRow.row;
 }
-*/
+
 
 @end

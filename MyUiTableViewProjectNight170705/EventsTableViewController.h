@@ -10,7 +10,7 @@
 #import "Events.h"
 #import "Event.h"
 
-@interface MyTableViewController<UITableViewDelegate, UITableViewDataSource> : UITableViewController
+@interface EventsTableViewController<UITableViewDelegate, UITableViewDataSource> : UITableViewController
 
 
 @property (strong, nonatomic) IBOutlet UITableView *eventsTableView;
