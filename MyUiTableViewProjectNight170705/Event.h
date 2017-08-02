@@ -13,9 +13,10 @@
 @property  NSString     *time;
 @property  NSString     *shortInfo;
 @property  NSString     *detailInfo;
+@property  NSDate       *date;
 
 
 - (instancetype)initWithShortInfo: (NSString *) si andDetailInfo:  (NSString *) di;
-
+- (void)timeStringFromDateFormat;
 
 @end

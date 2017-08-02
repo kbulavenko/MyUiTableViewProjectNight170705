@@ -15,10 +15,10 @@
 {
     self = [super init];
     if (self) {
-        NSDate     *now   =   [NSDate   date];
+        self->_date   =   [NSDate   date];
         NSDateFormatter  *formatter   =  [NSDateFormatter  new];
-        [formatter      setDateFormat: @"YYYY:MM:DD HH:mm:ss"];
-        self->_time   =  [formatter   stringFromDate: now];
+        [formatter      setDateFormat: @"YYYY:MM:dd HH:mm:ss"];
+        self->_time   =  [formatter   stringFromDate:  self->_date];
         self->_shortInfo   = si.copy;
         self->_detailInfo  = di.copy;
         
@@ -31,6 +31,12 @@
     return [NSString stringWithFormat:@"date:%@ info:%@ detail:%@",self.time, self.shortInfo, self.detailInfo ];
 }
 
+- (void)timeStringFromDateFormat
+{
+    NSDateFormatter  *formatter   =  [NSDateFormatter  new];
+    [formatter      setDateFormat: @"YYYY:MM:dd HH:mm:ss"];
+    self.time   =  [formatter   stringFromDate:  self.date];
+}
 
 
 @end

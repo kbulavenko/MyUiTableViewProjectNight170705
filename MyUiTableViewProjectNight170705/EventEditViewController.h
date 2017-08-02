@@ -14,7 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDetailLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *eventTimeTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *eventTimeTextField;
+
+@property (weak, nonatomic) IBOutlet UIDatePicker *eventDatePicker;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *eventShortInfoTextField;
 

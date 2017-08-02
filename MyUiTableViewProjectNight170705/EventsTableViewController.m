@@ -24,6 +24,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem              = self.editButtonItem;
     self.eventsTableView.allowsSelectionDuringEditing   = YES;
+    
+    NSLog(@"EventsTableViewController  viewDidLoad ");
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +80,7 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
-    NSLog(@"Editing");
+   // NSLog(@"Editing");
     [super setEditing:editing animated:animated];
     
     if (editing) {
@@ -112,7 +115,7 @@
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"commitEditingStyle %@", indexPath);
+  //  NSLog(@"commitEditingStyle %@", indexPath);
     if (editingStyle == UITableViewCellEditingStyleDelete && [[Events defaultCollection] allEventsCount ] > 0) {
         // Delete the row from the data source
         [[Events  defaultCollection]   removeEventAtIndex: indexPath.row];
@@ -161,7 +164,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     EventEditViewController     *eventEditViewControllerExemplar    =  segue.destinationViewController;
-    NSLog(@"%@", eventEditViewControllerExemplar);
+  //  NSLog(@"%@", eventEditViewControllerExemplar);
     // Pass the selected object to the new view controller.
     EventsTableViewController   *currentEventTableViewControllerExevplar  = segue.sourceViewController;
     
