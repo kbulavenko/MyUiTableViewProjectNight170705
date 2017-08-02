@@ -173,4 +173,12 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"viewWillAppear");
+    [super viewWillAppear:animated];
+    [self.tableView reloadData]; // to reload selected cell
+}
+
+
+
 @end

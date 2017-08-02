@@ -66,7 +66,19 @@
     if(self->_collection.count > 0 && index < self->_collection.count && event)
     {
         dispatch_barrier_async(self.readWriteQueue, ^{
+            
             [self->_collection  replaceObjectAtIndex:index withObject:event ];
+            NSArray      *sortedArray  =  [self->_collection  sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                Event    *event1  = obj1;
+                Event    *event2  = obj2;
+                NSDate    *date1  = event1.date.copy;
+                NSDate    *date2  = event2.date.copy;
+                
+                return  [date1 compare: date2];
+                
+            }];
+            
+            self->_collection   = [NSMutableArray<Event *>   arrayWithArray: sortedArray];
         });
     }
 

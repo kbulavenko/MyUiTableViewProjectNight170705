@@ -19,6 +19,7 @@
 		1909FD0D1F0D94070091941F /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909FD0C1F0D94070091941F /* Events.m */; };
 		1946B2C61F11B394004FACB2 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 1946B2C51F11B394004FACB2 /* Event.m */; };
 		19C97A931F31B86300EB1AFC /* EventEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C97A911F31B86300EB1AFC /* EventEditViewController.m */; };
+		19E92FCE1F32613800A0CAD1 /* EventsNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E92FCD1F32613800A0CAD1 /* EventsNavigationControllerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		1946B2C51F11B394004FACB2 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		19C97A901F31B86300EB1AFC /* EventEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEditViewController.h; sourceTree = "<group>"; };
 		19C97A911F31B86300EB1AFC /* EventEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEditViewController.m; sourceTree = "<group>"; };
+		19E92FCC1F32613800A0CAD1 /* EventsNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		19E92FCD1F32613800A0CAD1 /* EventsNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsNavigationControllerDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +182,8 @@
 				1909FD091F0D902B0091941F /* EventsTableViewController.m */,
 				19C97A901F31B86300EB1AFC /* EventEditViewController.h */,
 				19C97A911F31B86300EB1AFC /* EventEditViewController.m */,
+				19E92FCC1F32613800A0CAD1 /* EventsNavigationControllerDelegate.h */,
+				19E92FCD1F32613800A0CAD1 /* EventsNavigationControllerDelegate.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				1946B2C61F11B394004FACB2 /* Event.m in Sources */,
 				1909FCD91F0D89980091941F /* ViewController.m in Sources */,
 				19C97A931F31B86300EB1AFC /* EventEditViewController.m in Sources */,
+				19E92FCE1F32613800A0CAD1 /* EventsNavigationControllerDelegate.m in Sources */,
 				1909FCD61F0D89980091941F /* AppDelegate.m in Sources */,
 				1909FD0D1F0D94070091941F /* Events.m in Sources */,
 				1909FCD31F0D89980091941F /* main.m in Sources */,
