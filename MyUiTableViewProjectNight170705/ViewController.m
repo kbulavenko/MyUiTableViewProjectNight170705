@@ -25,9 +25,6 @@
     self->_myTableVC.eventsTableView.delegate      = self->_myTableVC;
    // self->_MyTableView.dataSource   = self->_myTableVC;
   //  self->_MyTableView.delegate     = self->_myTableVC;
-    
-    
-    
 }
 
 

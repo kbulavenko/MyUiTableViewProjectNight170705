@@ -48,16 +48,11 @@
     
     EventEditViewController     *eventEditViewControllerExemplar    =  segue.sourceViewController;
     NSLog(@"%@", eventEditViewControllerExemplar);
-    
     Event     *changedEvent  =  [[Event alloc]   initWithShortInfo: self.eventShortInfoTextField.text andDetailInfo:self.eventDetailInfoTextField.text];
     changedEvent.date   = self.eventDatePicker.date.copy;
     [changedEvent  timeStringFromDateFormat];
-    
     NSLog(@"changedEvent = %@", changedEvent);
-    
-    
     [[Events defaultCollection] replaceEventAtIndex: self.indexOfEvent byEvent: changedEvent];
-    
     // Pass the selected object to the new view controller.
 }
 

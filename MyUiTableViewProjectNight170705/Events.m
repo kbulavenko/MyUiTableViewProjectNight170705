@@ -73,11 +73,8 @@
                 Event    *event2  = obj2;
                 NSDate    *date1  = event1.date.copy;
                 NSDate    *date2  = event2.date.copy;
-                
                 return  [date1 compare: date2];
-                
             }];
-            
             self->_collection   = [NSMutableArray<Event *>   arrayWithArray: sortedArray];
         });
     }
