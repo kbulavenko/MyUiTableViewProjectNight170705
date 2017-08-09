@@ -17,7 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    // Init singltone
     [Events defaultCollection];
+    
     
     self->_myTableVC   = [EventsTableViewController  new];
     

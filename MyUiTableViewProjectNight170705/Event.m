@@ -11,8 +11,7 @@
 @implementation Event
 
 
-- (instancetype)initWithShortInfo: (NSString *) si andDetailInfo:  (NSString *) di
-{
+- (instancetype)initWithShortInfo: (NSString *) si andDetailInfo:  (NSString *) di  {
     self = [super init];
     if (self) {
         self->_date   =   [NSDate   date];
@@ -26,13 +25,11 @@
     return self;
 }
 
-- (NSString *)description
-{
+- (NSString *)description  {
     return [NSString stringWithFormat:@"date:%@ info:%@ detail:%@",self.time, self.shortInfo, self.detailInfo ];
 }
 
-- (void)timeStringFromDateFormat
-{
+- (void)timeStringFromDateFormat  {
     NSDateFormatter  *formatter   =  [NSDateFormatter  new];
     [formatter      setDateFormat: @"YYYY:MM:dd HH:mm:ss"];
     self.time   =  [formatter   stringFromDate:  self.date];

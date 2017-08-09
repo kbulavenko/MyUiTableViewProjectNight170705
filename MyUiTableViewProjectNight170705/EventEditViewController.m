@@ -57,22 +57,14 @@
 }
 
 
-- (void) didMoveToParentViewController:(UIViewController *)parent
-{
+- (void) didMoveToParentViewController:(UIViewController *)parent {
     NSLog(@"didMoveToParentViewController");
-    
     Event     *changedEvent  =  [[Event alloc]   initWithShortInfo: self.eventShortInfoTextField.text andDetailInfo:self.eventDetailInfoTextField.text];
     changedEvent.date   = self.eventDatePicker.date.copy;
     [changedEvent  timeStringFromDateFormat];
-    
     NSLog(@"changedEvent = %@", changedEvent);
-    
-    
     [[Events defaultCollection] replaceEventAtIndex: self.indexOfEvent byEvent: changedEvent];
-
-    
     NSLog(@"%@", [[Events defaultCollection]  allEvents]);
-    
 }
 
 

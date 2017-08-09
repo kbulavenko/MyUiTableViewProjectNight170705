@@ -11,8 +11,7 @@
 @implementation Events
 
 
-+ (instancetype)defaultCollection
-{
++ (instancetype)defaultCollection {
     static    Events   *defaultCollection  = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -23,8 +22,7 @@
 }
 
 
-- (instancetype)  initPrivate
-{
+- (instancetype)  initPrivate {
     self = [super init];
     if (self) {
         self->_collection   = [NSMutableArray<Event *>   array];
@@ -34,39 +32,36 @@
 }
 
 
-
-- (void)addEvent: (Event *) event                              //   Синхронное добавление  события, чтение не выполняется
-{
-    
-    
- //   dispatch_queue_t
+ //   Синхронное добавление  события, чтение не выполняется
+//   Synchrounous event adding, reading stopped
+- (void)addEvent: (Event *) event {
     if(event)
     {
         dispatch_barrier_async(self.readWriteQueue, ^{
             [self->_collection  addObject: event];
         });
     }
-    
-
 }
 
-- (void)removeEventAtIndex:  (NSUInteger ) index               //   Синхронное удаление события, чтение не выполняется
-{
+
+//   Синхронное удаление события, чтение не выполняется
+//   Synchrounous event removing, reading stopped
+
+- (void)removeEventAtIndex:  (NSUInteger ) index {
     if(self->_collection.count > 0)
     {
         dispatch_barrier_async(self.readWriteQueue, ^{
             [self->_collection  removeObjectAtIndex: index];
         });
     }
-    
-
 }
-- (void)replaceEventAtIndex: (NSUInteger) index  byEvent: (Event*) event  // Синхронная замена события по индексу , чтение не выполняется
-{
+// Синхронная замена события по индексу , чтение не выполняется
+//   Synchrounous event replacing, reading stopped
+
+- (void)replaceEventAtIndex: (NSUInteger) index  byEvent: (Event*) event {
     if(self->_collection.count > 0 && index < self->_collection.count && event)
     {
         dispatch_barrier_async(self.readWriteQueue, ^{
-            
             [self->_collection  replaceObjectAtIndex:index withObject:event ];
             NSArray      *sortedArray  =  [self->_collection  sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                 Event    *event1  = obj1;
@@ -78,18 +73,21 @@
             self->_collection   = [NSMutableArray<Event *>   arrayWithArray: sortedArray];
         });
     }
-
 }
-- (Event *)eventAtIndex: (NSUInteger) index                               // Параллельное чтение
-{
+
+// Параллельное чтение
+// Parallel reading
+- (Event *)eventAtIndex: (NSUInteger) index  {
     __block Event      *event  ;
     dispatch_sync(self->_readWriteQueue, ^{
         event = [self->_collection objectAtIndex: index];
     });
     return event;
 }
-- (NSArray<Event *> *)allEvents                             // Параллельное чтение
-{
+
+// Параллельное чтение
+// Parallel reading
+- (NSArray<Event *> *)allEvents {
     __block    NSArray<Event *>   *array;
     dispatch_sync(self->_readWriteQueue,^{
         array   =  [NSArray arrayWithArray: self->_collection];
@@ -97,8 +95,9 @@
     return array;
 }
 
-- (NSUInteger)allEventsCount                             // Параллельное чтение
-{
+// Параллельное чтение
+// Parallel reading
+- (NSUInteger)allEventsCount  {
     __block    NSUInteger   count;
     dispatch_sync(self->_readWriteQueue,^{
         count   =  [NSArray arrayWithArray: self->_collection].count;
